@@ -59,8 +59,7 @@ public class BlueprintAPIController {
 
     @RequestMapping(value = "/{author}/{bpname}", method = RequestMethod.GET)
     public ResponseEntity<?> getRecursosPlanos(@PathVariable ("author") String author, @PathVariable("bpname")String bpname) throws BlueprintNotFoundException {
-        Set<Blueprint> data = bs.getBlueprintsByAuthor(author);
-        data.
+        Set<Blueprint> data = bs.getBlueprintNames(author, bpname);
         try {
             //obtener datos que se enviarán a través del API
             return new ResponseEntity<>(data, HttpStatus.ACCEPTED);

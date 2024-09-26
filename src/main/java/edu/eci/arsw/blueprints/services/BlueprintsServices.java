@@ -80,6 +80,16 @@ public class BlueprintsServices {
         }
         return blueprintsFiltered;
     }
+
+    public Set<Blueprint>getBlueprintNames(String author, String bprintname) throws BlueprintNotFoundException {
+        Set<Blueprint> blueprints = new HashSet<>();
+        for(Blueprint blueprint : blueprints){
+            if (blueprint.getAuthor() == author && blueprint.getName() == bprintname){
+                blueprints.add(blueprint);
+            }
+        }
+        return blueprints;
+    }
         
 }
     
