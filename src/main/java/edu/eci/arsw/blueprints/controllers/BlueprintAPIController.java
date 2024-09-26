@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class BlueprintAPIController {
 
     @Autowired
-    @Qualifier(value = "blueprintservices")
-    BlueprintsServices bs;
+    @Qualifier(value = "BlueprintsServices")
+    private BlueprintsServices bs;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> manejadorGetRecursoXX(){

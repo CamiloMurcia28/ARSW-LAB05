@@ -21,6 +21,7 @@ import edu.eci.arsw.blueprints.persistence.Filter;
  * @author hcadavid
  */
 @Service
+@Qualifier("BlueprintsServices")
 public class BlueprintsServices {
    
     @Autowired
