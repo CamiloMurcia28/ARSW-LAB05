@@ -28,24 +28,8 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 2. Modifique el bean de persistecia 'InMemoryBlueprintPersistence' para que por defecto se inicialice con al menos otros tres planos, y con dos asociados a un mismo autor.
 
-  public InMemoryBlueprintPersistence() {
-        // load stub data
-        Point[] pts = new Point[] { new Point(140, 140), new Point(115, 115) };
-        Point[] pts1 = new Point[] { new Point(40, 40), new Point(15, 15) };
-        Point[] pts2 = new Point[] { new Point(10, 10), new Point(51, 51) };
-        Point[] pts3 = new Point[] { new Point(90, 90), new Point(30, 30) };
+![image](https://github.com/user-attachments/assets/505cfc90-351b-48c5-bc66-b3ab74fe3085)
 
-        Blueprint bp = new Blueprint("_authorname_", "_bpname_ ", pts);
-        Blueprint bp1 = new Blueprint("tomas", "plano1 ", pts1);
-        Blueprint bp2 = new Blueprint("tomas", "plano2 ", pts2);
-        Blueprint bp3 = new Blueprint("camilo", "plano3 ", pts3);
-
-        blueprints.put(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
-        blueprints.put(new Tuple<>(bp1.getAuthor(), bp1.getName()), bp1);
-        blueprints.put(new Tuple<>(bp2.getAuthor(), bp2.getName()), bp2);
-        blueprints.put(new Tuple<>(bp3.getAuthor(), bp3.getName()), bp3);
-
-    }
 
 3. Configure su aplicación para que ofrezca el recurso "/blueprints", de manera que cuando se le haga una petición GET, retorne -en formato jSON- el conjunto de todos los planos. Para esto:
 
@@ -80,10 +64,14 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 	```
 	Y luego enviando una petición GET a: http://localhost:8080/blueprints. Rectifique que, como respuesta, se obtenga un objeto jSON con una lista que contenga el detalle de los planos suministados por defecto, y que se haya aplicado el filtrado de puntos correspondiente.
 
+![image](https://github.com/user-attachments/assets/50f3dd92-6a5a-4f25-8acd-b520353c4162)
 
-5. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}, el cual retorne usando una representación jSON todos los planos realizados por el autor cuyo nombre sea {author}. Si no existe dicho autor, se debe responder con el código de error HTTP 404. Para esto, revise en [la documentación de Spring](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html), sección 22.3.2, el uso de @PathVariable. De nuevo, verifique que al hacer una petición GET -por ejemplo- a recurso http://localhost:8080/blueprints/juan, se obtenga en formato jSON el conjunto de planos asociados al autor 'juan' (ajuste esto a los nombres de autor usados en el punto 2).
+![image](https://github.com/user-attachments/assets/fc1a1a4c-489a-45e6-bcba-94ded7e222fe)
 
-6. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
+
+6. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}, el cual retorne usando una representación jSON todos los planos realizados por el autor cuyo nombre sea {author}. Si no existe dicho autor, se debe responder con el código de error HTTP 404. Para esto, revise en [la documentación de Spring](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html), sección 22.3.2, el uso de @PathVariable. De nuevo, verifique que al hacer una petición GET -por ejemplo- a recurso http://localhost:8080/blueprints/juan, se obtenga en formato jSON el conjunto de planos asociados al autor 'juan' (ajuste esto a los nombres de autor usados en el punto 2).
+
+7. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
 
 
 
