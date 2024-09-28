@@ -79,9 +79,11 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
    
 	![image](https://github.com/user-attachments/assets/c8596a8a-9539-4991-a60c-03a233cd67bf)
 	![image](https://github.com/user-attachments/assets/85bf3ebd-828e-4baf-a7df-b82003efc8b7)
+	![image](https://github.com/user-attachments/assets/4b4daa12-a1fb-4777-a63a-c948aaf02b03)
 
 
-6. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
+
+7. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
 
 	![image](https://github.com/user-attachments/assets/ffb87d66-a501-49b9-9922-942289821237)
 
