@@ -114,7 +114,9 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
         }        
  	
 	}
-	```	
+	```
+
+ ![image](https://github.com/user-attachments/assets/6ea32d00-5c7a-4867-b0f0-f52a42a3a8d2)
 
 
 2.  Para probar que el recurso ‘planos’ acepta e interpreta
@@ -133,10 +135,16 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 	Nota: puede basarse en el formato jSON mostrado en el navegador al consultar una orden con el método GET.
 
+![image](https://github.com/user-attachments/assets/0237379b-a853-4b4e-986b-e953ad1c4845)
 
-3. Teniendo en cuenta el autor y numbre del plano registrado, verifique que el mismo se pueda obtener mediante una petición GET al recurso '/blueprints/{author}/{bpname}' correspondiente.
 
-4. Agregue soporte al verbo PUT para los recursos de la forma '/blueprints/{author}/{bpname}', de manera que sea posible actualizar un plano determinado.
+
+4. Teniendo en cuenta el autor y numbre del plano registrado, verifique que el mismo se pueda obtener mediante una petición GET al recurso '/blueprints/{author}/{bpname}' correspondiente.
+
+![image](https://github.com/user-attachments/assets/9b105453-b4ad-4de9-a4f0-bcb2a648a573)
+
+
+5. Agregue soporte al verbo PUT para los recursos de la forma '/blueprints/{author}/{bpname}', de manera que sea posible actualizar un plano determinado.
 
 
 ### Parte III
