@@ -76,7 +76,9 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 
 5. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}, el cual retorne usando una representación jSON todos los planos realizados por el autor cuyo nombre sea {author}. Si no existe dicho autor, se debe responder con el código de error HTTP 404. Para esto, revise en [la documentación de Spring](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html), sección 22.3.2, el uso de @PathVariable. De nuevo, verifique que al hacer una petición GET -por ejemplo- a recurso http://localhost:8080/blueprints/juan, se obtenga en formato jSON el conjunto de planos asociados al autor 'juan' (ajuste esto a los nombres de autor usados en el punto 2).
-   
+
+   	![image](https://github.com/user-attachments/assets/c2810e81-47a0-4ad1-9208-15bc532daeea)
+
 	![image](https://github.com/user-attachments/assets/c8596a8a-9539-4991-a60c-03a233cd67bf)
 	![image](https://github.com/user-attachments/assets/85bf3ebd-828e-4baf-a7df-b82003efc8b7)
 	![image](https://github.com/user-attachments/assets/4b4daa12-a1fb-4777-a63a-c948aaf02b03)
@@ -85,8 +87,10 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 7. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
 
-	![image](https://github.com/user-attachments/assets/ffb87d66-a501-49b9-9922-942289821237)
+	![image](https://github.com/user-attachments/assets/9381332c-4304-4e39-88b9-1c164496bd92)
+
 	![image](https://github.com/user-attachments/assets/6ba344d9-4bd2-4dc8-b75e-eaecde139fc8)
+	![image](https://github.com/user-attachments/assets/dc28d8b6-f3ed-4793-b445-0b9e6ab2dc1d)
 	![image](https://github.com/user-attachments/assets/79a1ae8e-e2a7-4dd1-912e-cb43efe2b2cd)
 	![image](https://github.com/user-attachments/assets/07670e8d-d687-4b3e-b068-43b941bb29f8)
 
