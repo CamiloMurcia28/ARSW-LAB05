@@ -86,6 +86,12 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 7. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
 
 	![image](https://github.com/user-attachments/assets/ffb87d66-a501-49b9-9922-942289821237)
+	![image](https://github.com/user-attachments/assets/6ba344d9-4bd2-4dc8-b75e-eaecde139fc8)
+	![image](https://github.com/user-attachments/assets/79a1ae8e-e2a7-4dd1-912e-cb43efe2b2cd)
+	![image](https://github.com/user-attachments/assets/07670e8d-d687-4b3e-b068-43b941bb29f8)
+
+
+
 
 
 ### Parte II
