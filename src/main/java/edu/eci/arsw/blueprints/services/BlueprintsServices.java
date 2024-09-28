@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
+import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 /**
  *
@@ -98,6 +99,10 @@ public class BlueprintsServices {
             blueprintsFiltered.add(bp);
         }
         return blueprintsFiltered;
+  }
+
+  public void saveBlueprint(Blueprint bp) throws BlueprintPersistenceException {
+      bpp.saveBlueprint(bp);
   }
 
         
