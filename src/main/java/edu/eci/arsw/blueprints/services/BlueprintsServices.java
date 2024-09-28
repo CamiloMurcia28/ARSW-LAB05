@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
-import edu.eci.arsw.blueprints.persistence.Filter;
 /**
  *
  * @author hcadavid
@@ -69,27 +68,38 @@ public class BlueprintsServices {
      * 
      * @param author blueprint's author
      * @return all the blueprints of the given author
-     * @throws BlueprintNotFoundException if the given author doesn't exist
+     * @throws BlueprintNotFoundException if the given author doesn't exist or has no blueprints
      */
-    public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
+    public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException {
         Set<Blueprint> blueprints = bpp.getBlueprintsByAuthor(author);
+        
+        if (blueprints == null || blueprints.isEmpty()) {
+            throw new BlueprintNotFoundException("No se encontraron planos para el autor: " + author);
+        }
         Set<Blueprint> blueprintsFiltered = new HashSet<>();
-        for(Blueprint bp: blueprints){
+        for (Blueprint bp : blueprints) {
             filter.applyFilter(bp);
             blueprintsFiltered.add(bp);
         }
         return blueprintsFiltered;
     }
 
-    public Set<Blueprint>getBlueprintNames(String author, String bprintname) throws BlueprintNotFoundException {
-        Set<Blueprint> blueprints = new HashSet<>();
-        for(Blueprint blueprint : blueprints){
-            if (blueprint.getAuthor() == author && blueprint.getName() == bprintname){
-                blueprints.add(blueprint);
-            }
+
+
+  public Set<Blueprint> getBlueprintNames(String author, String bprintname) throws BlueprintNotFoundException {
+      Set<Blueprint> blueprints = bpp.getBlueprintNames(author,bprintname);
+        
+        if (blueprints == null || blueprints.isEmpty()) {
+            throw new BlueprintNotFoundException("No se encontraron planos para el autor: " + author);
         }
-        return blueprints;
-    }
+        Set<Blueprint> blueprintsFiltered = new HashSet<>();
+        for (Blueprint bp : blueprints) {
+            filter.applyFilter(bp);
+            blueprintsFiltered.add(bp);
+        }
+        return blueprintsFiltered;
+  }
+
         
 }
     
