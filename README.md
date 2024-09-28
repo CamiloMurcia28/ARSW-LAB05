@@ -1,5 +1,7 @@
 ### Escuela Colombiana de Ingeniería
 
+## Autores: Camilo Nicolas Murcia Espinosa y Tomas Suarez Piratova
+
 ### Arquitecturas de Software
 
 
