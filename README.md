@@ -26,6 +26,9 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 
 1. Integre al proyecto base suministrado los Beans desarrollados en el ejercicio anterior. Sólo copie las clases, NO los archivos de configuración. Rectifique que se tenga correctamente configurado el esquema de inyección de dependencias con las anotaciones @Service y @Autowired.
 
+![image](https://github.com/user-attachments/assets/909415af-3a2e-46cd-b891-48a93e94e2a2)
+
+
 2. Modifique el bean de persistecia 'InMemoryBlueprintPersistence' para que por defecto se inicialice con al menos otros tres planos, y con dos asociados a un mismo autor.
 
 ![image](https://github.com/user-attachments/assets/505cfc90-351b-48c5-bc66-b3ab74fe3085)
@@ -55,6 +58,9 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 	```
 	* Haga que en esta misma clase se inyecte el bean de tipo BlueprintServices (al cual, a su vez, se le inyectarán sus dependencias de persisntecia y de filtrado de puntos).
 
+	![image](https://github.com/user-attachments/assets/ca4b4dea-5c62-46ca-89f6-508043eff9a2)
+
+
 4. Verifique el funcionamiento de a aplicación lanzando la aplicación con maven:
 
 	```bash
@@ -62,20 +68,22 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 	$ mvn spring-boot:run
 	
 	```
-	Y luego enviando una petición GET a: http://localhost:8080/blueprints. Rectifique que, como respuesta, se obtenga un objeto jSON con una lista que contenga el detalle de los planos suministados por defecto, y que se haya aplicado el filtrado de puntos correspondiente.
+	Y luego enviando una petición GET a: http://localhost:8080/blueprints. Rectifique que, como respuesta, se obtenga un objeto jSON con una lista que contenga el detalle de los planos suministados por defecto, y que 	se haya aplicado el filtrado de puntos correspondiente.
 
-![image](https://github.com/user-attachments/assets/50f3dd92-6a5a-4f25-8acd-b520353c4162)
+	![image](https://github.com/user-attachments/assets/50f3dd92-6a5a-4f25-8acd-b520353c4162)
 
-![image](https://github.com/user-attachments/assets/fc1a1a4c-489a-45e6-bcba-94ded7e222fe)
-
-
-6. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}, el cual retorne usando una representación jSON todos los planos realizados por el autor cuyo nombre sea {author}. Si no existe dicho autor, se debe responder con el código de error HTTP 404. Para esto, revise en [la documentación de Spring](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html), sección 22.3.2, el uso de @PathVariable. De nuevo, verifique que al hacer una petición GET -por ejemplo- a recurso http://localhost:8080/blueprints/juan, se obtenga en formato jSON el conjunto de planos asociados al autor 'juan' (ajuste esto a los nombres de autor usados en el punto 2).
-![image](https://github.com/user-attachments/assets/c8596a8a-9539-4991-a60c-03a233cd67bf)
-![image](https://github.com/user-attachments/assets/85bf3ebd-828e-4baf-a7df-b82003efc8b7)
+	![image](https://github.com/user-attachments/assets/fc1a1a4c-489a-45e6-bcba-94ded7e222fe)
 
 
-7. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
+5. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}, el cual retorne usando una representación jSON todos los planos realizados por el autor cuyo nombre sea {author}. Si no existe dicho autor, se debe responder con el código de error HTTP 404. Para esto, revise en [la documentación de Spring](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html), sección 22.3.2, el uso de @PathVariable. De nuevo, verifique que al hacer una petición GET -por ejemplo- a recurso http://localhost:8080/blueprints/juan, se obtenga en formato jSON el conjunto de planos asociados al autor 'juan' (ajuste esto a los nombres de autor usados en el punto 2).
+   
+	![image](https://github.com/user-attachments/assets/c8596a8a-9539-4991-a60c-03a233cd67bf)
+	![image](https://github.com/user-attachments/assets/85bf3ebd-828e-4baf-a7df-b82003efc8b7)
 
+
+6. Modifique el controlador para que ahora, acepte peticiones GET al recurso /blueprints/{author}/{bpname}, el cual retorne usando una representación jSON sólo UN plano, en este caso el realizado por {author} y cuyo nombre sea {bpname}. De nuevo, si no existe dicho autor, se debe responder con el código de error HTTP 404. 
+
+	![image](https://github.com/user-attachments/assets/ffb87d66-a501-49b9-9922-942289821237)
 
 
 ### Parte II
