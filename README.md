@@ -148,8 +148,10 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
 ![image](https://github.com/user-attachments/assets/68f3b9f3-2d7c-4caa-ac87-cccd85868e97)
 
 
-![image](https://github.com/user-attachments/assets/e534eb26-d9a5-46d8-9f27-91d4afec4a60)
+![image](https://github.com/user-attachments/assets/d5918d37-59d3-4e91-a5fe-36a732af9360)
+
 Actualizamos el plano1 de tomas
+
 ![image](https://github.com/user-attachments/assets/247125a6-602e-41db-8374-3be832010e0a)
 
 
