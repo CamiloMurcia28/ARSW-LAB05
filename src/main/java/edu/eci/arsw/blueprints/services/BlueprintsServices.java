@@ -105,6 +105,20 @@ public class BlueprintsServices {
       bpp.saveBlueprint(bp);
   }
 
+  public void updateBlueprint(String author, String name, Blueprint blue) throws BlueprintNotFoundException {
+    // Obtener el Blueprint existente
+    Blueprint existingBlueprint = bpp.getBlueprint(author, name);
+
+    // Verificar si el Blueprint existe
+    if (existingBlueprint == null) {
+        throw new BlueprintNotFoundException("No se encontró el Blueprint para el autor " + author + " y el nombre " + name);
+    }
+
+    // Actualizar los puntos del Blueprint existente
+    existingBlueprint.setPoints(blue.getPoints());
+}
+
+
         
 }
     

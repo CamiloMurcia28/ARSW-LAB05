@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -83,6 +84,25 @@ public ResponseEntity<?> getRecursosPlanos(@PathVariable("author") String author
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
         }
     }
+
+  @PutMapping("/{author}/{bpname}")
+public ResponseEntity<?> actualizarBlueprint(@PathVariable("author") String author, 
+                                             @PathVariable("bpname") String bpname, 
+                                             @RequestBody Blueprint blueprint) throws BlueprintNotFoundException {
+    try {
+        // Actualizar el Blueprint
+        bs.updateBlueprint(author, bpname, blueprint);
+        return new ResponseEntity<>(HttpStatus.OK);  // Retorna 200 si fue exitoso
+    } catch (BlueprintNotFoundException ex) {
+        // Si no se encuentra el Blueprint, devolver 404
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    } catch (Exception ex) {
+        // Manejar otros errores inesperados
+        return new ResponseEntity<>("Error al actualizar el Blueprint", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
 
 
 
