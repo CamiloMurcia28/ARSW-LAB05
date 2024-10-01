@@ -5,31 +5,31 @@
  */
 package edu.eci.arsw.blueprints.persistence.impl;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author hcadavid
  */
-@Service
+
 @Component
 @Qualifier("inMemoryBluePrintPersistence")
 public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
 
-    private final Map<Tuple<String, String>, Blueprint> blueprints = new HashMap<>();
+    private final Map<Tuple<String, String>, Blueprint> blueprints = new ConcurrentHashMap<>();
 
     public InMemoryBlueprintPersistence() {
         // load stub data
@@ -52,7 +52,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
         if (blueprints.containsKey(new Tuple<>(bp.getAuthor(), bp.getName()))) {
             throw new BlueprintPersistenceException("The given blueprint already exists: " + bp);
         } else {
-            blueprints.put(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
+            blueprints.putIfAbsent(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
         }
     }
 
@@ -65,8 +65,6 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
         return authorBlueprints;
     }
 
-
-   
 
     @Override
     public Blueprint getBlueprint(String author, String bprintname) throws BlueprintNotFoundException {

@@ -1,0 +1,8 @@
+i. ¿Qué condiciones de carrera podrían ocurrir?
+Cuando intentamos consultar o agregar nuevos planos, podríamos enfrentarnos a una situación en la que varias operaciones acceden simultáneamente al HashMap donde se almacenan los planos.
+
+ii. ¿Cuáles son las áreas críticas?
+El problema surge porque el almacenamiento de los planos no está diseñado para ser seguro frente a múltiples hilos (thread-safe). Esto provoca una condición de carrera cuando dos solicitudes intentan añadir un plano con el mismo nombre y autor al mismo tiempo.
+
+Solución:
+Para garantizar la seguridad frente a hilos, cambiaremos el tipo de HashMap por un ConcurrentHashMap, ya que este asegura una ejecución segura con múltiples hilos. Además, reemplazaremos el método put() por putIfAbsent(), lo que evitará la condición de carrera al verificar si ya existe un plano antes de agregarlo.
