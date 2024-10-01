@@ -164,15 +164,21 @@ El componente BlueprintsRESTAPI funcionará en un entorno concurrente. Es decir,
 
 Cuando se necesite consultar o agregar nuevos planos, se puede experimentar un escenario donde se acceda al HashMap y donde se alamcenen los planos.
 
-  ![image](https://github.com/user-attachments/assets/8209630c-3065-454d-972f-d6841df063fc)
+  ![image](https://github.com/user-attachments/assets/8ba873c1-1934-4aa0-a1cd-998b1c016070)
 
 * Cuales son las respectivas regiones críticas?
 
 Sabiendo que el almacenamiento persistente de los planos no es seguro para los hilos(thread-safe) surge una condicion carrera cuando 2 solicitudes intentan agregar un plano al mismo tiempo con el mismo nombre y autor.
 
-![image](https://github.com/user-attachments/assets/e849c613-f63d-4acf-8ee0-153bfe854d48)
+![image](https://github.com/user-attachments/assets/69436a20-4aa2-4405-b402-9ae32908618b)
+
 
 Para asegurar el funcionamiento thread-safe, vamos a cambiar el tipo de HashMap a un ConcurrentHashMap, ya que es una coleccion que ya implementa la concurrecia y que ademas garantiza un funcionamiento thread-safe. En cuanto a la condicion carrera, vamos a sustituir el metodo put() por el metodo putIfAbsent(), que es usado para mapear una llave y valor especifico, solo si esta llave no existe o ha sido mapeada como null, de esta forma se previena la condicion carrera.
+
+![image](https://github.com/user-attachments/assets/d6013b89-4a3b-443d-beaf-36b09b052929)
+
+![image](https://github.com/user-attachments/assets/eef00bdf-9ea5-425f-8452-cad11f118279)
+
 
 Ajuste el código para suprimir las condiciones de carrera. Tengan en cuenta que simplemente sincronizar el acceso a las operaciones de persistencia/consulta DEGRADARÁ SIGNIFICATIVAMENTE el desempeño de API, por lo cual se deben buscar estrategias alternativas.
 
